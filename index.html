@@ -332,15 +332,17 @@
 
         .experience-card li {
             padding: 0.5rem 0;
-            padding-left: 1.5rem;
+            padding-left: 2rem;
             position: relative;
             color: #555;
+            line-height: 1.6;
         }
 
         .experience-card li::before {
             content: "⚡";
             position: absolute;
             left: 0;
+            top: 0.5rem;
             color: #667eea;
         }
 
@@ -490,6 +492,13 @@
             .experience-card li {
                 font-size: 0.95rem;
                 padding: 0.4rem 0;
+                padding-left: 2rem;
+                line-height: 1.5;
+            }
+
+            .experience-card li::before {
+                top: 0.4rem;
+                font-size: 1rem;
             }
 
             .contact-content {
@@ -557,6 +566,15 @@
             .skill-card,
             .experience-card {
                 padding: 1.2rem;
+            }
+
+            .experience-card li {
+                padding-left: 1.8rem;
+                font-size: 0.9rem;
+            }
+
+            .experience-card li::before {
+                font-size: 0.9rem;
             }
 
             .experience-card h3 {
