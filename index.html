@@ -757,6 +757,222 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
+
+        /* Game Section Styles */
+        .game-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .game-intro {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px var(--card-shadow);
+            transition: background 0.3s ease;
+        }
+
+        .game-intro h3 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .game-intro p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .game-board {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px var(--card-shadow);
+            transition: background 0.3s ease;
+        }
+
+        .game-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .stat-label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .turbine-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        #turbineCanvas {
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1), transparent);
+        }
+
+        .status-indicator {
+            margin-top: 1.5rem;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .status-indicator.optimal {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            box-shadow: 0 4px 15px rgba(74, 222, 128, 0.4);
+        }
+
+        .status-indicator.warning {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: white;
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+        }
+
+        .status-indicator.danger {
+            background: linear-gradient(135deg, #f87171, #ef4444);
+            color: white;
+            box-shadow: 0 4px 15px rgba(248, 113, 113, 0.4);
+            animation: pulse-danger 1s infinite;
+        }
+
+        @keyframes pulse-danger {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .game-controls {
+            margin: 2rem 0;
+        }
+
+        .game-controls label {
+            display: block;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .flow-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            outline: none;
+            -webkit-appearance: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .flow-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            border: 3px solid #667eea;
+        }
+
+        .flow-slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            border: 3px solid #667eea;
+        }
+
+        .control-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .game-btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(74, 222, 128, 0.4);
+        }
+
+        .start-btn:disabled {
+            background: linear-gradient(135deg, #9ca3af, #6b7280);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .reset-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .reset-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .game-info {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .game-info p {
+            color: var(--text-secondary);
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+
+        .game-info strong {
+            color: #667eea;
+        }
     </style>
 </head>
 <body>
@@ -790,6 +1006,7 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#interests">Interests</a></li>
+                <li><a href="#game">Game</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -947,6 +1164,61 @@
         </div>
     </section>
 
+    <section id="game">
+        <h2 class="section-title">Hydropower Challenge</h2>
+        <div class="game-container">
+            <div class="game-intro">
+                <h3>⚡ Control the Turbine ⚡</h3>
+                <p>Balance water flow to generate maximum power without overloading!</p>
+            </div>
+            
+            <div class="game-board">
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Power Output:</span>
+                        <span class="stat-value" id="powerOutput">0 MW</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Water Flow:</span>
+                        <span class="stat-value" id="waterFlow">0 m³/s</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Score:</span>
+                        <span class="stat-value" id="score">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">High Score:</span>
+                        <span class="stat-value" id="highScore">0</span>
+                    </div>
+                </div>
+
+                <div class="turbine-display">
+                    <canvas id="turbineCanvas" width="300" height="300"></canvas>
+                    <div class="status-indicator" id="statusIndicator">
+                        <span id="statusText">OPTIMAL</span>
+                    </div>
+                </div>
+
+                <div class="game-controls">
+                    <label for="flowControl">Water Flow Control:</label>
+                    <input type="range" id="flowControl" min="0" max="100" value="0" class="flow-slider">
+                    <div class="control-buttons">
+                        <button class="game-btn start-btn" id="startBtn">Start Turbine</button>
+                        <button class="game-btn reset-btn" id="resetBtn">Reset</button>
+                    </div>
+                </div>
+
+                <div class="game-info">
+                    <p><strong>How to Play:</strong></p>
+                    <p>• Click "Start Turbine" to begin generating power</p>
+                    <p>• Adjust water flow to keep power output in the green zone (40-80 MW)</p>
+                    <p>• Too low = inefficient, too high = overload!</p>
+                    <p>• Earn points for maintaining optimal power levels</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact">
         <h2 class="section-title">Contact Me</h2>
         <div class="contact-content">
@@ -957,7 +1229,7 @@
             <div class="contact-info">
                 <div class="contact-item">
                     <span>📧</span>
-                    <span>rasghale1234@gmail.com</span>
+                    <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="186a796b7f7079747d292a2b2c587f75797174367b7775">[email&#160;protected]</a></span>
                 </div>
                 <div class="contact-item">
                     <span>📱</span>
@@ -975,7 +1247,7 @@
         <p>&copy; 2026 Ras Bahadur Ghale. Powering Tomorrow with Clean Energy Today.</p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Dark mode toggle
         const darkModeToggle = document.getElementById('darkModeToggle');
         const html = document.documentElement;
@@ -1042,12 +1314,181 @@
 
             // Close menu when a link is clicked
             document.querySelectorAll('#navMenu a').forEach(link => {
-                link.addEventListener('click', () => {
+                        link.addEventListener('click', () => {
                     navMenu.classList.remove('active');
                     menuToggle.textContent = '☰';
                 });
             });
         }
+
+        // Hydropower Turbine Game
+        const canvas = document.getElementById('turbineCanvas');
+        const ctx = canvas.getContext('2d');
+        const flowControl = document.getElementById('flowControl');
+        const startBtn = document.getElementById('startBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const powerOutput = document.getElementById('powerOutput');
+        const waterFlow = document.getElementById('waterFlow');
+        const scoreDisplay = document.getElementById('score');
+        const highScoreDisplay = document.getElementById('highScore');
+        const statusIndicator = document.getElementById('statusIndicator');
+        const statusText = document.getElementById('statusText');
+
+        let gameRunning = false;
+        let rotation = 0;
+        let rotationSpeed = 0;
+        let score = 0;
+        let highScore = localStorage.getItem('turbineHighScore') || 0;
+        highScoreDisplay.textContent = highScore;
+
+        // Draw turbine
+        function drawTurbine() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            
+            ctx.save();
+            ctx.translate(centerX, centerY);
+            ctx.rotate(rotation);
+            
+            // Draw turbine blades
+            const blades = 6;
+            for (let i = 0; i < blades; i++) {
+                const angle = (Math.PI * 2 / blades) * i;
+                ctx.save();
+                ctx.rotate(angle);
+                
+                // Blade gradient based on speed
+                const gradient = ctx.createLinearGradient(0, 0, 0, 100);
+                const speedRatio = Math.min(rotationSpeed / 0.3, 1);
+                gradient.addColorStop(0, `rgba(102, 126, 234, ${0.8 * speedRatio})`);
+                gradient.addColorStop(1, `rgba(118, 75, 162, ${0.4 * speedRatio})`);
+                
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.lineTo(-20, 80);
+                ctx.lineTo(20, 80);
+                ctx.closePath();
+                ctx.fill();
+                
+                ctx.strokeStyle = '#667eea';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
+                ctx.restore();
+            }
+            
+            // Center hub
+            ctx.fillStyle = '#667eea';
+            ctx.beginPath();
+            ctx.arc(0, 0, 15, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.restore();
+            
+            // Glow effect when running
+            if (gameRunning && rotationSpeed > 0) {
+                ctx.save();
+                ctx.shadowBlur = 20;
+                ctx.shadowColor = `rgba(102, 126, 234, ${rotationSpeed * 2})`;
+                ctx.strokeStyle = `rgba(102, 126, 234, ${rotationSpeed})`;
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, 120, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.restore();
+            }
+        }
+
+        // Update game state
+        function updateGame() {
+            if (!gameRunning) return;
+            
+            const flowValue = parseInt(flowControl.value);
+            const targetSpeed = flowValue / 300;
+            
+            // Smooth speed transition
+            rotationSpeed += (targetSpeed - rotationSpeed) * 0.1;
+            rotation += rotationSpeed;
+            
+            // Calculate power output (MW)
+            const power = Math.round(flowValue * 0.85);
+            powerOutput.textContent = `${power} MW`;
+            waterFlow.textContent = `${flowValue} m³/s`;
+            
+            // Update status
+            if (power >= 40 && power <= 80) {
+                statusIndicator.className = 'status-indicator optimal';
+                statusText.textContent = 'OPTIMAL ⚡';
+                score += 1;
+            } else if (power < 40 && power > 0) {
+                statusIndicator.className = 'status-indicator warning';
+                statusText.textContent = 'TOO LOW ⚠️';
+            } else if (power > 80) {
+                statusIndicator.className = 'status-indicator danger';
+                statusText.textContent = 'OVERLOAD! 🔥';
+                score = Math.max(0, score - 2);
+            } else {
+                statusIndicator.className = 'status-indicator';
+                statusText.textContent = 'OFFLINE';
+            }
+            
+            scoreDisplay.textContent = score;
+            
+            // Update high score
+            if (score > highScore) {
+                highScore = score;
+                highScoreDisplay.textContent = highScore;
+                localStorage.setItem('turbineHighScore', highScore);
+            }
+            
+            drawTurbine();
+            requestAnimationFrame(updateGame);
+        }
+
+        // Start button
+        startBtn.addEventListener('click', () => {
+            if (!gameRunning) {
+                gameRunning = true;
+                startBtn.textContent = 'Stop Turbine';
+                startBtn.style.background = 'linear-gradient(135deg, #f87171, #ef4444)';
+                updateGame();
+            } else {
+                gameRunning = false;
+                startBtn.textContent = 'Start Turbine';
+                startBtn.style.background = 'linear-gradient(135deg, #4ade80, #22c55e)';
+            }
+        });
+
+        // Reset button
+        resetBtn.addEventListener('click', () => {
+            gameRunning = false;
+            rotation = 0;
+            rotationSpeed = 0;
+            score = 0;
+            flowControl.value = 0;
+            startBtn.textContent = 'Start Turbine';
+            startBtn.style.background = 'linear-gradient(135deg, #4ade80, #22c55e)';
+            powerOutput.textContent = '0 MW';
+            waterFlow.textContent = '0 m³/s';
+            scoreDisplay.textContent = '0';
+            statusIndicator.className = 'status-indicator';
+            statusText.textContent = 'OFFLINE';
+            drawTurbine();
+        });
+
+        // Flow control slider
+        flowControl.addEventListener('input', () => {
+            if (!gameRunning) {
+                const flowValue = parseInt(flowControl.value);
+                waterFlow.textContent = `${flowValue} m³/s`;
+            }
+        });
+
+        // Initial draw
+        drawTurbine();
     </script>
 </body>
 </html>
