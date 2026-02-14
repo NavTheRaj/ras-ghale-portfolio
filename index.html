@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ras Bahadur Ghale - Mechanical Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Animated Water Background */
+        .water-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: -2;
+        }
+
+        .water-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.4) 0%, transparent 50%);
+            z-index: -1;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Water Flow Animation */
+        .flow-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .flow-line {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: flow 3s linear infinite;
+        }
+
+        .flow-line:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .flow-line:nth-child(2) { left: 30%; animation-delay: 0.5s; }
+        .flow-line:nth-child(3) { left: 50%; animation-delay: 1s; }
+        .flow-line:nth-child(4) { left: 70%; animation-delay: 1.5s; }
+        .flow-line:nth-child(5) { left: 90%; animation-delay: 2s; }
+
+        @keyframes flow {
+            0% { transform: translateY(-100px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "⚡";
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 4rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            color: #764ba2;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* About Section */
+        .about-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .skill-card p {
+            color: #666;
+        }
+
+        /* Experience Section */
+        .experience-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            border-left: 5px solid #667eea;
+        }
+
+        .experience-card h3 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-card .company {
+            color: #764ba2;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .experience-card .duration {
+            color: #888;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .experience-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+        }
+
+        .experience-card li::before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .contact-item span {
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.4rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-content {
+                padding: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        /* Turbine Animation */
+        .turbine {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 80px;
+            height: 80px;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        .turbine-blade {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: spin 4s linear infinite;
+        }
+
+        .turbine-blade::before,
+        .turbine-blade::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.8);
+            transform-origin: center;
+        }
+
+        .turbine-blade::before {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        .turbine-blade::after {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="water-bg"></div>
+    <div class="water-overlay"></div>
+    
+    <div class="flow-lines">
+        <div class="flow-line"></div>
+        <div class="flow-line"></div>
+        <div class="flow-line"></div>
+        <div class="flow-line"></div>
+        <div class="flow-line"></div>
+    </div>
+
+    <div class="turbine">
+        <div class="turbine-blade"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">RBG</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#interests">Interests</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Ras Bahadur Ghale</h1>
+            <h2>Mechanical Engineer</h2>
+            <p>Harnessing the Power of Water for a Sustainable Future</p>
+            <p style="font-size: 1.1rem; color: #764ba2; font-weight: 600;">Upper Syange Hydropower Limited, Nepal</p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>
+                As a dedicated Mechanical Engineer at Upper Syange Hydropower Limited in Nepal, I bring 19 months 
+                of hands-on experience in supervising hydropower plant operations and designing critical plant components. 
+                My passion lies in developing sustainable energy solutions that harness the natural power of water to 
+                bring clean electricity to communities across Nepal.
+            </p>
+            <p>
+                I graduated from Visvesvaraya Technological University in Bangalore, India in 2022, where I developed 
+                strong foundations in mechanical engineering principles, CAD software (AutoCAD, SolidWorks), and problem-solving 
+                methodologies. My role involves supervising plant operators, inspecting hydropower facilities, and coordinating 
+                with government organizations to efficiently evacuate generated energy to the grid.
+            </p>
+            <p>
+                With expertise in plant design, operations management, and a commitment to excellence, I work to ensure 
+                optimal performance of hydropower infrastructure while contributing to Nepal's renewable energy goals. 
+                I believe in continuous learning, integrity, and building strong relationships to deliver the best results 
+                for my organization and community.
+            </p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Core Competencies</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">💻</div>
+                <h3>Computer Skills</h3>
+                <p>MS Word, Excel, PowerPoint, Outlook for documentation and analysis</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">📐</div>
+                <h3>CAD Design</h3>
+                <p>AutoCAD and SolidWorks for mechanical design and plant components</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🔧</div>
+                <h3>Plant Operations</h3>
+                <p>Supervision, inspection, and maintenance of hydropower facilities</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🧩</div>
+                <h3>Problem Solving</h3>
+                <p>Analytical thinking and innovative solutions for engineering challenges</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🤝</div>
+                <h3>Teamwork & Communication</h3>
+                <p>Effective collaboration and coordination with teams and stakeholders</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">⚡</div>
+                <h3>CNC Operations</h3>
+                <p>Training in CNC programming and operations for manufacturing processes</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="skills-grid">
+            <div class="skill-card" style="text-align: left;">
+                <div class="skill-icon" style="text-align: center;">🎓</div>
+                <h3 style="text-align: center;">Bachelor's Degree</h3>
+                <p><strong>Visvesvaraya Technological University</strong></p>
+                <p>Bangalore, India</p>
+                <p style="color: #667eea; font-weight: 600;">Graduated: 2022</p>
+                <p style="margin-top: 1rem;">Mechanical Engineering program focused on design, manufacturing, and renewable energy systems.</p>
+            </div>
+            <div class="skill-card" style="text-align: left;">
+                <div class="skill-icon" style="text-align: center;">📚</div>
+                <h3 style="text-align: center;">Year 12</h3>
+                <p><strong>Southwestern Secondary School</strong></p>
+                <p>Basundhara, Kathmandu, Nepal</p>
+                <p style="color: #667eea; font-weight: 600;">Completed: 2017</p>
+                <p style="margin-top: 1rem;">Higher secondary education with focus on science and mathematics.</p>
+            </div>
+            <div class="skill-card" style="text-align: left;">
+                <div class="skill-icon" style="text-align: center;">📖</div>
+                <h3 style="text-align: center;">Year 10</h3>
+                <p><strong>Sweta Sadan School</strong></p>
+                <p>Samakhusi, Kathmandu, Nepal</p>
+                <p style="color: #667eea; font-weight: 600;">Completed: 2015</p>
+                <p style="margin-top: 1rem;">Secondary education building strong academic foundations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="experience-card">
+            <h3>Mechanical Engineer</h3>
+            <div class="company">Upper Syange Hydropower Limited</div>
+            <div class="duration">19 months | Nepal</div>
+            <ul>
+                <li>Supervise plant operators and conduct regular inspections of the hydropower plant to ensure optimal performance and safety standards</li>
+                <li>Design mechanical parts and components for the hydropower plant using CAD software (AutoCAD, SolidWorks)</li>
+                <li>Coordinate with government organizations to efficiently evacuate generated energy to the national grid</li>
+                <li>Monitor equipment performance and implement maintenance schedules to maximize uptime</li>
+                <li>Collaborate with cross-functional teams to optimize plant operations and energy generation</li>
+                <li>Ensure compliance with safety protocols and environmental regulations</li>
+                <li>Provide technical support and training to operations staff</li>
+            </ul>
+        </div>
+
+        <div class="experience-card">
+            <h3>Training & Development</h3>
+            <div class="company">Professional Certifications</div>
+            <div class="duration">Ongoing Professional Development</div>
+            <ul>
+                <li>Completed training at Sipradi Trading Pvt. Ltd. in the Customer Care (CV) Department, enhancing client service skills</li>
+                <li>Virtual training on CNC Operations and Programming organized by VTU-National Academy for Skill Development, Dandeli, India</li>
+                <li>Continuous learning in mechanical engineering best practices and hydropower technology advancements</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="interests">
+        <h2 class="section-title">Interests & Activities</h2>
+        <div class="about-content" style="text-align: center;">
+            <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 2rem;">
+                <div style="flex: 1; min-width: 200px; max-width: 300px;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🤝</div>
+                    <h3 style="color: #667eea; margin-bottom: 0.5rem;">Community Work</h3>
+                    <p style="color: #666;">Actively engaged in community service and social development initiatives</p>
+                </div>
+                <div style="flex: 1; min-width: 200px; max-width: 300px;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🚴</div>
+                    <h3 style="color: #667eea; margin-bottom: 0.5rem;">Cycling</h3>
+                    <p style="color: #666;">Passionate about cycling for fitness and exploring the beautiful landscapes of Nepal</p>
+                </div>
+                <div style="flex: 1; min-width: 200px; max-width: 300px;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">⚽</div>
+                    <h3 style="color: #667eea; margin-bottom: 0.5rem;">Football</h3>
+                    <p style="color: #666;">Enjoy playing football for teamwork, fitness, and recreation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-content">
+            <p style="font-size: 1.2rem; color: #555; margin-bottom: 2rem;">
+                Interested in discussing hydropower projects, engineering solutions, or collaboration opportunities? 
+                Feel free to reach out!
+            </p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>rasghale1234@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>+977-9829180141</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Kathmandu, Nepal</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Ras Bahadur Ghale. Powering Tomorrow with Clean Energy Today.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active state to navigation on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '#333';
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.style.color = '#667eea';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
